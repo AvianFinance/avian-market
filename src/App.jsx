@@ -6,8 +6,8 @@ import { TimeProvider } from "./contexts/TimeContext";
 import { Layout } from "./layout";
 import { Market } from "./market";
 import { MintNFT } from "./mint";
-// import { Owned } from "./owned";
-// import { Rented } from "./rented";
+import { Owned } from "./owned";
+import { Rented } from "./rented";
 
 function App() {
   return (
@@ -21,8 +21,8 @@ function App() {
                   <Route index element={<Navigate to="/market" replace />} />
                   <Route path="market" element={<Market />} />
                   {/* <Route path="owned" element={<Owned />} /> */}
-                  {/* <Route path="rented" element={<Rented />} /> */}
-                  <Route path="mintnft" element={<MintNFT />} />
+                  <Route path="rented" element={<Rented />} />
+                  {/* <Route path="mintnft" element={<MintNFT />} /> */}
                 </Route>
               </Routes>
             </BrowserRouter>

@@ -26,18 +26,26 @@ function MarketCardContent({ data }) {
   const [canRent, setCanRent] = useState(false);
   const [cantRentReason, setCantRentReason] = useState(false);
   const [rentDuration, setRentDuration] = useState(0);
-  const [readableRentDuration, setReadableRentDuration] = useState("");
+  const [readableRentDuration, setReadableRentDuration] = useState(" 0 days");
   const now = useTime();
   const inputRef = useRef(null);
 
   const updateRentDuration = useCallback(() => {
-    const timeLeft = endDateUnix - now;
-    const newRentDurationPercent = parseInt(inputRef.current.value) / INPUT_MAX;
-    const newRentDuration = Math.floor(newRentDurationPercent * timeLeft);
-    if (newRentDuration !== rentDuration) {
-      setRentDuration(newRentDuration);
-      setReadableRentDuration(getReadableTime(newRentDuration, 1));
-    }
+    // const timeLeft = endDateUnix - now;
+    // console.log(timeLeft)
+    // console.log("input",inputRef.current.value )
+    // const newRentDurationPercent = parseInt(inputRef.current.value) / INPUT_MAX;
+    // console.log(newRentDurationPercent)
+    // const newRentDuration = Math.floor(newRentDurationPercent * timeLeft);
+    // console.log(newRentDuration)
+    // if (newRentDuration !== rentDuration) {
+    //   setRentDuration(newRentDuration);
+    //   setReadableRentDuration(getReadableTime(newRentDuration, 1));
+    // }
+    const newRentDuration = parseInt(inputRef.current.value)
+    setRentDuration(newRentDuration);
+    setReadableRentDuration(newRentDuration+" days");
+    // const rentDuration = inputRef.current.value
   }, [now, endDateUnix, rentDuration]);
 
   useEffect(() => {

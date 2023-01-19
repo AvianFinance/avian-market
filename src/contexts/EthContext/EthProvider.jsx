@@ -9,6 +9,7 @@ function EthProvider({ children }) {
   const RIME_TOKEN_CONTRACT_ADDRESS = "0x4909493F604AB882327ca880ad5B330e2B3C43C1"; // Rime token contract address
   const RIME_RENT_CONTRACT_ADDRESS = "0xA5e80F4980878b7C2c23D6fA002358A47d0060a3"; // Rime Rent contract address
   const MARKETPLACE_CONTRACT_ADDRESS = "0xC2AA1764dcf714DEbf762b95aBBaDE411eD35B2c"; // Marketplace contract address
+  const AVIAN_MARKETPLACE_CONTRACT_ADDRESS = "0x4fe9966609D644E841Fee5953D5AE3886237Db69"; // Marketplace contract address
 
   const init = useCallback(
     async artifacts => {
@@ -20,8 +21,12 @@ function EthProvider({ children }) {
         try {
 
           for (const [contractName, artifact] of Object.entries(artifacts)) {
-            if(contractName === "Marketplace") {
-              const contract1 = new web3.eth.Contract(artifact.abi, MARKETPLACE_CONTRACT_ADDRESS);
+            // if(contractName === "Marketplace") {
+            //   const contract1 = new web3.eth.Contract(artifact.abi, MARKETPLACE_CONTRACT_ADDRESS);
+            //   contracts[contractName] = contract1;
+            // }
+            if(contractName === "AvianMarket") {
+              const contract1 = new web3.eth.Contract(artifact.abi, AVIAN_MARKETPLACE_CONTRACT_ADDRESS);
               contracts[contractName] = contract1;
             }
             if(contractName === "RimeToken") {
@@ -49,7 +54,8 @@ function EthProvider({ children }) {
     const tryInit = () => {
       try {
         const artifacts = {
-          Marketplace: require("../../contracts/Marketplace.json"),
+          // Marketplace: require("../../contracts/Marketplace.json"),
+          AvianMarket: require("../../contracts/AvianMarket.json"),
           RimeToken: require("../../contracts/RimeToken.json"),
           RimeRent: require("../../contracts/RimeRent.json")
         };

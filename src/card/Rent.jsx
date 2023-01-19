@@ -17,15 +17,16 @@ function Rent({
   return (
     <div className="rent-container">
       <h3>Duration: {readableRentDuration}</h3>
-      <input
+      {/* <input
         ref={inputRef}
         type="range"
-        min="0"
+        min="423"
         max={inputMax}
         defaultValue="0"
         onChange={updateRentDuration}
         disabled={!canRent}
-      />
+      /> */}
+      <input type="number" ref={inputRef} disabled={!canRent}  onChange={updateRentDuration} min="1"/>
       <button
         onClick={() => rent(nftContractAddress, tokenId, rentDuration)}
         disabled={!canRent}
